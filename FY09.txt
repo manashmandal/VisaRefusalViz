@@ -1,0 +1,201 @@
+Country	Percentage
+Afghanistan	59.6%
+Albania	39.6%
+Algeria	20.5%
+Andorra	60.0%
+Angola	17.7%
+Antigua And Barbuda	13.1%
+Argentina	3.3%
+Armenia	48.9%
+Australia	19.8%
+Austria 	11.9%
+Azerbaijan 	11.5%
+Bahrain 	6.7%
+Bangladesh 	34.1%
+Barbados 	7.8%
+Belarus 	15.5%
+Belgium 	9.4%
+Belize 	21.4%
+Benin 	37.0%
+Bhutan 	68.1%
+Bolivia 	17.4%
+Bosnia-Herzegovina 	13.9%
+Botswana 	16.8%
+Brazil 	7.0%
+Brunei 	5.6%
+Bulgaria	 17.8%
+Burkina Faso	 48.9%
+Burma 	34.2%
+Burundi 	52.2%
+Cambodia 	47.2%
+Cameroon 	48.3%
+Canada 	52.8%
+Cape Verde 	45.3%
+Central African Republic 	45.0%
+Chad 	37.6%
+Chile 	5.9%
+China - Mainland	 15.6%
+China - Taiwan 	4.4%
+Colombia 	27.3%
+Comoros 	24.5%
+Congo (Brazzaville) 	33.0%
+Congo (Kinshasa) 	35.6%
+Costa Rica 	16.6%
+Cote D`Ivoire 	36.5%
+Croatia 	5.3%
+Cuba 	31.3%
+Cyprus 	1.4%
+Czech Republic 	6.9%
+Denmark 	13.6%
+Djibouti 	42.1%
+Dominica 	20.3%
+Dominican Republic 	34.6%
+Ecuador 	36.0%
+Egypt 	29.7%
+El Salvador	 52.1%
+Equatorial Guinea 	8.2%
+Eritrea 	48.2%
+Estonia 	6.2%
+Ethiopia 	50.6%
+Federated States Of Micronesia	 100.0%
+Fiji 	40.0%
+Finland 	23.6%
+France 	12.0%
+Gabon 	23.8%
+Georgia 	49.7%
+Germany	 16.0%
+Ghana 	54.3%
+Great Britain And Northern Ireland	 27.8%
+Greece	 2.0%
+Grenada 	19.5%
+Guatemala	 29.7%
+Guinea 	67.8%
+Guinea - Bissau 	61.9%
+Guyana 	55.9%
+Haiti	 61.4%
+Honduras 	29.2%
+Hong Kong (BNO HK passport)	 5.0%
+Hong Kong 	S. A. R. 6.9%
+Hungary 	21.1%
+Iceland	 6.3%
+India 	28.7%
+Indonesia 	25.0%
+Iran 	40.1%
+Iraq 	31.8%
+Ireland 	24.2%
+Israel 	5.1%
+Italy 	11.1%
+Jamaica 	46.4%
+Japan 	16.0%
+Jordan 	31.4%
+Kazakhstan 	12.2%
+Kenya 	35.8%
+Kiribati 	10.2%
+Kosovo 	29.0%
+Kuwait 	-2.2%
+Kyrgyzstan 	32.8%
+Laos 	72.4%
+Latvia 	19.5%
+Lebanon 	18.6%
+Lesotho 	17.7%
+Liberia 	66.0%
+Libya 	19.2%
+Liechtenstein 	12.5%
+Lithuania 	17.6%
+Luxembourg 	10.0%
+Macau S.A.R. 	16.4%
+Macedonia 	21.5%
+Madagascar 	18.2%
+Malawi 	27.1%
+Malaysia 	6.6%
+Maldives 	19.7%
+Mali 	52.8%
+Malta 	3.8%
+Mauritania 	54.1%
+Mauritius 	7.2%
+Mexico 	10.9%
+Moldova 	41.3%
+Monaco 	0.0%
+Mongolia 	34.9%
+Montenegro 	27.5%
+Morocco 	19.6%
+Mozambique 	11.4%
+Namibia 	10.8%
+Nauru	 60.0%
+Nepal	 59.1%
+Netherlands	 18.0%
+New Zealand 	16.1%
+Nicaragua 	35.1%
+Niger 	44.1%
+Nigeria 	37.3%
+Norway 	15.2%
+Oman 	2.8%
+Pakistan 	40.7%
+Palestinian Authority Travel Document 	45.2%
+Panama 13.1%
+Papua New Guinea 	5.7%
+Paraguay 	9.8%
+Peoples Republic Of Korea - North Korea	 4.0%
+Peru 	29.1%
+Philippines 	35.9%
+Poland 	13.5%
+Portugal 	17.4%
+Qatar 	3.4%
+Republic Of Palau	 0.0%
+Republic Of The Marshall Islands 	7.3%
+Romania 	26.3%
+Russia 	4.9%
+Rwanda 	53.2%
+Samoa 	22.4%
+San Marino 	0.0%
+Sao Tome And Principe 	33.3%
+Saudi Arabia 	3.8%
+Senegal 	60.2%
+Serbia 	11.0%
+Serbia And Montenegro 	12.0%
+Seychelles 	21.3%
+Sierra Leone 	52.6%
+Singapore 	16.0%
+Slovakia 	8.3%
+Slovenia 	7.8%
+Solomon Islands 	17.0%
+Somalia 	73.4%
+South Africa 	3.8%
+South Korea 	5.5%
+Spain 	7.7%
+Sri Lanka 	40.8%
+St. Kitts And Nevis 	16.1%
+St. Lucia 	17.2%
+St. Vincent And The Grenadines 	17.1%
+Sudan 	62.2%
+Suriname 	15.5%
+Swaziland 	10.4%
+Sweden 	19.3%
+Switzerland 	2.8%
+Syria 	23.6%
+Tajikistan 	23.8%
+Tanzania 	28.3%
+Thailand 	16.4%
+The Bahamas 	8.3%
+The Gambia 	51.9%
+Timor-Leste 	17.5%
+Togo 	42.6%
+Tonga 	47.8%
+Trinidad And Tobago 	33.1%
+Tunisia 	18.5%
+Turkey 	9.0%
+Turkmenistan 	19.8%
+Tuvalu 	28.6%
+Uganda 	38.8%
+Ukraine 	36.8%
+United Arab Emirates 	9.6%
+Unknown Nationality Or Stateless 	50.2%
+Uruguay 	5.4%
+Uzbekistan 	41.1%
+Vanuatu 	20.0%
+Vatican City 	7.1%
+Venezuela 	18.3%
+Vietnam	42.3%
+Yemen	47.3%
+Zambia	38.9%
+Zimbabwe	31.3%
