@@ -65,7 +65,10 @@
         $("#viz").on('click', 'path[class^=d3plus_data]', function() {
             console.log(this);
             console.log($(this).attr('id'));
+
+            d3.select("#d3plus_tooltip_id_visualization_focus").append("h1").text("Hello world");
         });
+
     })
 </script>
 
