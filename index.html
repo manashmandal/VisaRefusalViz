@@ -1,35 +1,72 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
+<meta charset="utf-8">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Visa Refusal Rate</title>
+    <title>Visa Refusal Project</title>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
-    <script src="/datamaps.world.hires.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://d3plus.org/js/d3.js"></script>
+    <script src="https://d3plus.org/js/topojson.js"></script>
+    <script src="https://d3plus.org/js/d3plus.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
 
-    <div id="basic" style="position: relative; width: 500px; height: 300px;"></div>
+    <div id="viz"></div>
 
     <script>
-        var basic = new Datamap({
-            element: document.getElementById("basic")
-        });
+        var sample_data = [{
+            "value": 30,
+            "country": "eufra",
+            "name": "France"
+        }, {
+            "value": 40,
+            "country": "euprt",
+            "name": "Portugal"
+        }, {
+            "value": 50,
+            "country": "euesp",
+            "name": "Spain"
+        }, {
+            "value": 60,
+            "country": "euita",
+            "name": "Italy"
+        }]
 
-        $("path[class^=datamaps-subunit").click(function() {
-            console.log($(this).attr('class').split(' ')[1]);
-        });
+        function mouse_click() {
+            console.log(this);
+        }
+
+
+        var visualization = d3plus.viz()
+            .container("#viz")
+            .data(sample_data)
+            .type("geo_map")
+            .coords({
+                "solo": ["euesp", "euita", "eufra", "euprt"],
+                "value": "http://d3plus.org/topojson/countries.json"
+            })
+            .id("country")
+            .text("name")
+            .color("value")
+            .tooltip("value")
+            .draw();
     </script>
-
 
 </body>
 
+<script>
+    $(document).ready(function() {
+        console.log("READY");
+
+        // Selecting static parent then adding click function to the dynamic element
+        $("#viz").on('click', 'path[class^=d3plus_data]', function() {
+            console.log(this);
+            console.log($(this).attr('id'));
+        });
+    })
+</script>
 
 </html>
