@@ -1,22 +1,48 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<meta charset="utf-8">
 
 <head>
-    <title>Visa Refusal Project</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>--- TODO ---</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
 
     <script src="https://d3plus.org/js/d3.js"></script>
     <script src="https://d3plus.org/js/topojson.js"></script>
     <script src="https://d3plus.org/js/d3plus.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- Leave those next 4 lines if you care about users using IE8 -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 <body>
 
-    <div id="viz"></div>
+    <div class="container">
+        <div class="row">
+            <div id="vizid" class="col-lg-8" style="height:400px;">
+                <div id="viz"></div>
+            </div>
+            <div class="col-lg-4" style="height:400px;">
+                <div id="viz2"></div>
+            </div>
+        </div>
+
+    </div>
+
 
     <script>
+        function mouse_click() {
+            console.log(this);
+        }
+
         var sample_data = [{
             "value": 30,
             "country": "eufra",
@@ -35,10 +61,6 @@
             "name": "Italy"
         }]
 
-        function mouse_click() {
-            console.log(this);
-        }
-
 
         var visualization = d3plus.viz()
             .container("#viz")
@@ -53,23 +75,74 @@
             .color("value")
             .tooltip("value")
             .draw();
+
+
+        var sd = [{
+            "name": "alpha",
+            "skill": "power",
+            "value": 4
+        }, {
+            "name": "alpha",
+            "skill": "courage",
+            "value": 8
+        }, {
+            "name": "alpha",
+            "skill": "wisdom",
+            "value": 2
+        }, {
+            "name": "beta",
+            "skill": "power",
+            "value": 5
+        }, {
+            "name": "beta",
+            "skill": "courage",
+            "value": 4
+        }, {
+            "name": "beta",
+            "skill": "wisdom",
+            "value": 6
+        }];
+        var visualization = d3plus.viz()
+            .container("#viz2")
+            .data(sd)
+            .id(["name", "skill"])
+            .size("value")
+            .type("radar")
+            .draw();
+
+
+        var toggle = true;
     </script>
 
+
+    <!-- TODO: Here goes your content! -->
+
+
+
+    <!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 
 <script>
     $(document).ready(function() {
         console.log("READY");
-
         // Selecting static parent then adding click function to the dynamic element
-        $("#viz").on('click', 'path[class^=d3plus_data]', function() {
-            console.log(this);
-            console.log($(this).attr('id'));
 
-            d3.select("#d3plus_tooltip_id_visualization_focus").append("h1").text("Hello world");
+        $(document).on('click', ".d3plus_data", function() {
+            //console.log($(this).attr('id'));
+            var is_focused = $("#d3plus_tooltip_id_visualization_focus").length;
+
+            if (is_focused > 0) {
+                console.log("FOCUSED");
+            } else {
+                console.log("OUT OF FOCUS");
+            }
+
         });
 
-    })
+
+    });
 </script>
 
 </html>
