@@ -129,12 +129,13 @@
         console.log("READY");
         // Selecting static parent then adding click function to the dynamic element
 
-        $(document).on('click', ".d3plus_data", function() {
+        $(document).on('click', ".d3plus_data", function(e) {
             //console.log($(this).attr('id'));
             var is_focused = $("#d3plus_tooltip_id_visualization_focus").length;
 
             if (is_focused > 0) {
                 console.log("FOCUSED");
+                console.log(e.target);
             } else {
                 console.log("OUT OF FOCUS");
             }
