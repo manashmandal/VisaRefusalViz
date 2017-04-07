@@ -30,8 +30,8 @@
             <div id="vizid" class="col-lg-8" style="height:400px;">
                 <div id="viz"></div>
             </div>
-            <div class="col-lg-4" style="height:400px;">
-                <div id="viz2"></div>
+            <div class="col-lg-4" id="vizid2" style="height:400px;">
+                <!--<div id="viz2"></div> -->
             </div>
         </div>
 
@@ -59,6 +59,10 @@
             "value": 60,
             "country": "euita",
             "name": "Italy"
+        }, {
+            "value": 80,
+            "country": "asbgd",
+            "name": "Bangladesh"
         }]
 
 
@@ -67,7 +71,7 @@
             .data(sample_data)
             .type("geo_map")
             .coords({
-                "solo": ["euesp", "euita", "eufra", "euprt"],
+                "solo": ["euesp", "euita", "eufra", "euprt", "asbgd"],
                 "value": "http://d3plus.org/topojson/countries.json"
             })
             .id("country")
@@ -75,43 +79,6 @@
             .color("value")
             .tooltip("value")
             .draw();
-
-
-        var sd = [{
-            "name": "alpha",
-            "skill": "power",
-            "value": 4
-        }, {
-            "name": "alpha",
-            "skill": "courage",
-            "value": 8
-        }, {
-            "name": "alpha",
-            "skill": "wisdom",
-            "value": 2
-        }, {
-            "name": "beta",
-            "skill": "power",
-            "value": 5
-        }, {
-            "name": "beta",
-            "skill": "courage",
-            "value": 4
-        }, {
-            "name": "beta",
-            "skill": "wisdom",
-            "value": 6
-        }];
-        var visualization = d3plus.viz()
-            .container("#viz2")
-            .data(sd)
-            .id(["name", "skill"])
-            .size("value")
-            .type("radar")
-            .draw();
-
-
-        var toggle = true;
     </script>
 
 
@@ -130,14 +97,53 @@
         // Selecting static parent then adding click function to the dynamic element
 
         $(document).on('click', ".d3plus_data", function(e) {
+
             //console.log($(this).attr('id'));
             var is_focused = $("#d3plus_tooltip_id_visualization_focus").length;
 
             if (is_focused > 0) {
                 console.log("FOCUSED");
                 console.log(e.target);
+
+                $("#vizid2").append("<div id='viz2'></div>")
+
+
+                var sd = [{
+                    "name": "alpha",
+                    "skill": "power",
+                    "value": 4
+                }, {
+                    "name": "alpha",
+                    "skill": "courage",
+                    "value": 8
+                }, {
+                    "name": "alpha",
+                    "skill": "wisdom",
+                    "value": 2
+                }, {
+                    "name": "beta",
+                    "skill": "power",
+                    "value": 5
+                }, {
+                    "name": "beta",
+                    "skill": "courage",
+                    "value": 4
+                }, {
+                    "name": "beta",
+                    "skill": "wisdom",
+                    "value": 6
+                }];
+                var visualization = d3plus.viz()
+                    .container("#viz2")
+                    .data(sd)
+                    .id(["name", "skill"])
+                    .size("value")
+                    .type("radar")
+                    .draw();
             } else {
                 console.log("OUT OF FOCUS");
+
+                $("#viz2").remove();
             }
 
         });
