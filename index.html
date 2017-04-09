@@ -27,10 +27,10 @@
 
     <div class="container">
         <div class="row">
-            <div id="vizid" class="col-lg-8" style="height:400px;">
+            <div id="vizid" class="col-md-8" style="height:400px;">
                 <div id="viz"></div>
             </div>
-            <div class="col-lg-4" id="vizid2" style="height:400px;">
+            <div class="col-md-4" id="vizid2" style="height:400px;">
                 <!--<div id="viz2"></div> -->
             </div>
         </div>
@@ -92,47 +92,60 @@
 </body>
 
 <script>
+    var sd = [{
+        "name": "alpha",
+        "skill": "power",
+        "value": 4
+    }, {
+        "name": "alpha",
+        "skill": "courage",
+        "value": 8
+    }, {
+        "name": "alpha",
+        "skill": "wisdom",
+        "value": 2
+    }, {
+        "name": "beta",
+        "skill": "power",
+        "value": 5
+    }, {
+        "name": "beta",
+        "skill": "courage",
+        "value": 4
+    }, {
+        "name": "beta",
+        "skill": "wisdom",
+        "value": 6
+    }];
+
+
+
     $(document).ready(function() {
+
+        var current_id = '';
+        var old_id = '';
+
         console.log("READY");
+
         // Selecting static parent then adding click function to the dynamic element
 
         $(document).on('click', ".d3plus_data", function(e) {
 
-            //console.log($(this).attr('id'));
+            // Get current id 
+            current_id = e.target.id;
+
             var is_focused = $("#d3plus_tooltip_id_visualization_focus").length;
 
+
             if (is_focused > 0) {
-                console.log("FOCUSED");
-                console.log(e.target);
+
+                if (current_id !== old_id) {
+                    $("#viz2").remove();
+                    old_id = current_id;
+                }
 
                 $("#vizid2").append("<div id='viz2'></div>")
 
-
-                var sd = [{
-                    "name": "alpha",
-                    "skill": "power",
-                    "value": 4
-                }, {
-                    "name": "alpha",
-                    "skill": "courage",
-                    "value": 8
-                }, {
-                    "name": "alpha",
-                    "skill": "wisdom",
-                    "value": 2
-                }, {
-                    "name": "beta",
-                    "skill": "power",
-                    "value": 5
-                }, {
-                    "name": "beta",
-                    "skill": "courage",
-                    "value": 4
-                }, {
-                    "name": "beta",
-                    "skill": "wisdom",
-                    "value": 6
-                }];
                 var visualization = d3plus.viz()
                     .container("#viz2")
                     .data(sd)
@@ -140,14 +153,12 @@
                     .size("value")
                     .type("radar")
                     .draw();
-            } else {
-                console.log("OUT OF FOCUS");
 
+            } else {
                 $("#viz2").remove();
             }
 
         });
-
 
     });
 </script>
