@@ -54,6 +54,8 @@
                         <div id="viz4" style="height: 250%; width: 500px;"></div>
 
                         <script>
+                            var selected_country = "";
+
                             var sample_data = [{
                                 "value": 30,
                                 "country": "eufra",
@@ -102,9 +104,7 @@
 
 
     <script>
-                            function mouse_click() {
-                                console.log(this);
-                            }
+                            
                             var sample_data = [{
                                 "value": 30,
                                 "country": "eufra",
@@ -152,55 +152,61 @@
 </body>
 
 <script>
-                            var sd = [
-                                { "year": 1991, "name": "bangladesh", "value": 15 },
-                                { "year": 1993, "name": "bangladesh", "value": 100 }
-                            ]
+    var sd = {
+        "asbgd" : [
+        { "year": 1991, "name": "bangladesh", "value": 15 },
+        { "year": 1993, "name": "bangladesh", "value": 100 }
+        ]
+    }
 
 
 
-                            $(document).ready(function () {
-                                var current_id = '';
-                                var old_id = '';
-                                console.log("READY");
-                                // Selecting static parent then adding click function to the dynamic element
-                                $(document).on('click', ".d3plus_data", function (e) {
-                                    // Get current id 
-                                    current_id = e.target.id;
-                                    var is_focused = $("#d3plus_tooltip_id_visualization_focus").length;
-                                    if (is_focused > 0) {
-                                        if (current_id !== old_id) {
-                                            $("#viz2").remove();
-                                            old_id = current_id;
-                                        }
-                                        $("#vizid2").append("<div id='viz2'></div>")
+    $(document).ready(function () {
+        var current_id = '';
+        var old_id = '';
+        console.log("READY");
+        // Selecting static parent then adding click function to the dynamic element
+        $(document).on('click', ".d3plus_data", function (e) {
 
-                                        var visualization = d3plus.viz()
-                                            .container("#viz2")
-                                            .data(sd)
-                                            .type("bar")
-                                            .id("name")
-                                            .x({ "stacked": true, "value": "value" })
-                                            .y("year")
-                                            .color({
-                                                "range": ["blue", "white", "yellow"],
-                                                "value": "value"
-                                            })
-                                            .time("year")
-                                            .draw()
+            // Get current id
+            current_id = e.target.id;
 
-                                    } else {
-                                        $("#viz2").remove();
-                                    }
-                                });
-                                // Send Graph data according to the modal
-                                $("#myModal").on("show.bs.modal", function (event) {
-                                    console.log("MOdal Opened");
-                                });
-                                $("#myModal").on("hide.bs.modal", function (event) {
-                                    console.log("Modal Closed");
-                                });
-                            });
+            console.log("Current country "  + current_id);
+
+            var is_focused = $("#d3plus_tooltip_id_visualization_focus").length;
+            if (is_focused > 0) {
+                if (current_id !== old_id) {
+                    $("#viz2").remove();
+                    old_id = current_id;
+                }
+                $("#vizid2").append("<div id='viz2'></div>")
+
+                var visualization = d3plus.viz()
+                    .container("#viz2")
+                    .data(sd[current_id])
+                    .type("bar")
+                    .id("name")
+                    .x({ "stacked": true, "value": "value" })
+                    .y("year")
+                    .color({
+                        "range": ["blue", "white", "yellow"],
+                        "value": "value"
+                    })
+                    .time("year")
+                    .draw()
+
+            } else {
+                $("#viz2").remove();
+            }
+        });
+        // Send Graph data according to the modal
+        $("#myModal").on("show.bs.modal", function (event) {
+            console.log("MOdal Opened");
+        });
+        $("#myModal").on("hide.bs.modal", function (event) {
+            console.log("Modal Closed");
+        });
+    });
 
 </script>
 
