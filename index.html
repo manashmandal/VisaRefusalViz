@@ -41,109 +41,38 @@
             </div>
         </div>
 
-        <!-- Trigger the modal with a button -->
-        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-
-        <!-- Modal -->
-        <div id="myModal" class="modal fade" role="dialog">
-            <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Modal Header</h4>
-                    </div>
-                    <div class="modal-body">
-                        <p>Some text in the modal.</p>
-
-                        <div id="viz4" style="height: 250%; width: 500px;"></div>
-
-                        <script>
-                            var selected_country = "";
-
-                            var sample_data = [{
-                                "value": 30,
-                                "country": "eufra",
-                                "name": "France"
-                            }, {
-                                "value": 40,
-                                "country": "euprt",
-                                "name": "Portugal"
-                            }, {
-                                "value": 50,
-                                "country": "euesp",
-                                "name": "Spain"
-                            }, {
-                                "value": 60,
-                                "country": "euita",
-                                "name": "Italy"
-                            }, {
-                                "value": 80,
-                                "country": "asbgd",
-                                "name": "Bangladesh"
-                            }]
-                            var visualization = d3plus.viz()
-                                .container("#viz4")
-                                .data(sample_data)
-                                .type("geo_map")
-                                .coords({
-                                    "solo": ["asbgd"],
-                                    "value": "http://d3plus.org/topojson/countries.json"
-                                })
-                                .id("country")
-                                .text("name")
-                                .color("value")
-                                .tooltip("value")
-                                .draw();
-                        </script>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <input class="form-control" data-list="CSS, JavaScript, HTML, SVG, ARIA, MathML" data-multiple />
 
     </div>
 
 
+
     <script>
 
-    new Awesomplete('input[data-multiple]', {
-        filter: function(text, input) {
-            return Awesomplete.FILTER_CONTAINS(text, input.match(/[^,]*$/)[0]);
-        },
 
-        replace: function(text) {
-            var before = this.input.value.match(/^.+,\s*|/)[0];
-            this.input.value = before + text + ", ";
-        }
-    });
                             
                             var sample_data = [{
-                                "value": 30,
+                               // "value": 30,
                                 "country": "eufra",
                                 "name": "France"
                             }, {
-                                "value": 40,
+                                //"value": 40,
                                 "country": "euprt",
                                 "name": "Portugal"
                             }, {
-                                "value": 50,
+                                //"value": 50,
                                 "country": "euesp",
                                 "name": "Spain"
                             }, {
-                                "value": 60,
+                                //"value": 60,
                                 "country": "euita",
                                 "name": "Italy"
                             }, {
-                                "value": 80,
+                                //"value": 80,
                                 "country": "asbgd",
                                 "name": "Bangladesh"
                             }]
+
+                        
                             var visualization = d3plus.viz()
                                 .container("#viz")
                                 .data(sample_data)
