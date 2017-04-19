@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title></title>
+    <title>Visa Refusal Visualization</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -21,12 +20,6 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-    <link rel="stylesheet" href="prism/prism.css" />
-    <link rel="stylesheet" href="awesomplete.css" />
-    <link rel="stylesheet" href="style.css" />
-    <script src="awesomplete.js"></script>
-    <script src="index.js"></script>
 </head>
 
 <body>
@@ -37,125 +30,19 @@
                 <div id="viz"></div>
             </div>
             <div class="col-md-4" id="vizid2" style="height:400px;">
-                <!--<div id="viz2"></div> -->
+                <!-- Visualization 2 -->
             </div>
         </div>
 
 
     </div>
 
-
-
-    <script>
-
-
-                            
-                            var sample_data = [{
-                               // "value": 30,
-                                "country": "eufra",
-                                "name": "France"
-                            }, {
-                                //"value": 40,
-                                "country": "euprt",
-                                "name": "Portugal"
-                            }, {
-                                //"value": 50,
-                                "country": "euesp",
-                                "name": "Spain"
-                            }, {
-                                //"value": 60,
-                                "country": "euita",
-                                "name": "Italy"
-                            }, {
-                                //"value": 80,
-                                "country": "asbgd",
-                                "name": "Bangladesh"
-                            }]
-
-                        
-                            var visualization = d3plus.viz()
-                                .container("#viz")
-                                .data(sample_data)
-                                .type("geo_map")
-                                .coords({
-                                    "solo": ["euesp", "euita", "eufra", "euprt", "asbgd", "ocnru"],
-                                    "value": "http://d3plus.org/topojson/countries.json"
-                                })
-                                .id("country")
-                                .text("name")
-                                // .color("value")
-                                .tooltip("name")
-                                .draw();
-    </script>
-
-
     <!-- TODO: Here goes your content! -->
-
-
 
     <!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
 </body>
-
-<script>
-    //Global variable for data
-    var sd;
-
-    $(document).ready(function () {
-        
-    // Loading external data 
-    d3.json('visa_refusal.json', function(data){
-        sd = data;
-    });
-
-
-        var current_id = '';
-        var old_id = '';
-        console.log("READY");
-        // Selecting static parent then adding click function to the dynamic element
-        $(document).on('click', ".d3plus_data", function (e) {
-
-            // Get current id
-            current_id = e.target.id;
-
-            console.log("Current country "  + current_id);
-
-            var is_focused = $("#d3plus_tooltip_id_visualization_focus").length;
-            if (is_focused > 0) {
-                if (current_id !== old_id) {
-                    $("#viz2").remove();
-                    old_id = current_id;
-                }
-                $("#vizid2").append("<div id='viz2'></div>")
-
-                var visualization = d3plus.viz()
-                    .container("#viz2")
-                    .data(sd[current_id])
-                    .type("bar")
-                    .id("name")
-                    .x({ "stacked": true, "value": "rate" })
-                    .y("year")
-                    .color({
-                        "range": ["blue", "white", "yellow"],
-                        "value": "rate"
-                    })
-                    .time("year")
-                    .draw()
-
-            } else {
-                $("#viz2").remove();
-            }
-        });
-        // Send Graph data according to the modal
-        $("#myModal").on("show.bs.modal", function (event) {
-            console.log("MOdal Opened");
-        });
-        $("#myModal").on("hide.bs.modal", function (event) {
-            console.log("Modal Closed");
-        });
-    });
-
-</script>
 
 </html>
