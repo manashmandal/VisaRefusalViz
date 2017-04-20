@@ -18,6 +18,7 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.min.css" />
 
   <script src="js/d3.js"></script>
   <script src="js/topojson.js"></script>
@@ -34,6 +35,19 @@
 <body>
 
   <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+
+        <select name="" id="select-countries">
+        </select>
+
+        <button type="button" class="btn btn-default btn-md" onclick="draw()">
+          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Draw
+        </button>
+
+      </div>
+    </div>
+
     <div class="row">
       <div id="vizid" class="col-md-8" style="height:400px;">
         <div id="viz"></div>
@@ -54,6 +68,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script> -->
   <script src="js/jquery.min.js" charset="utf-8"></script>
   <script src="js/bootstrap.min.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/js/standalone/selectize.js"></script>
   <script src="js/script.js"></script>
 </body>
 

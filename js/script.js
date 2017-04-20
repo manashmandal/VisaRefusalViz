@@ -3,11 +3,45 @@ $(document).ready(function () {
     //Required variables
     var code2country;
     var country2code;
+    var selected_countries = [];
 
     // Capitalizes word for country
     String.prototype.capitalize = function() {
       return this.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
     };
+
+
+    //Populate option using json file
+    $.getJSON("js/options.json", function(data){
+      console.log(data);
+      data.forEach(function(v){
+        $("#select-countries").append($('<option>', {
+            value: v,
+            text: v.capitalize()
+          }));
+    });
+
+    //Grabbing data on the fly 
+      $('#select-countries').selectize({
+          maxItems: 7,
+          onItemAdd: function (data, $item){
+              console.log(data);
+              
+              //Add selected countries to the list 
+              selected_countries.push(country2code[data.toLowerCase()])
+
+              console.log(selected_countries);
+              console.log($item);
+          },
+          onItemRemove: function(data){
+              console.log("THE DATA : " + data);
+              //index of the data 
+              var del_index = selected_countries.indexOf(code2country[data.toLowerCase()]);
+              // Removing the selected data
+              selected_countries.splice(del_index, 1);
+          }
+      });
+    });
 
     // Loading code to country conversion file
     console.log("Code to country");
@@ -39,34 +73,6 @@ $(document).ready(function () {
 
     //Map viz begin
     var sample_data;
-    // var sample_data = [{
-    //
-    //     "country": "eufra",
-    //     "name": "France"
-    // }, {
-    //
-    //     "country": "euprt",
-    //     "name": "Portugal"
-    // }, {
-    //
-    //     "country": "euesp",
-    //     "name": "Spain"
-    // }, {
-    //
-    //     "country": "euita",
-    //     "name": "Italy"
-    // }, {
-    //
-    //     "country": "asbgd",
-    //     "name": "Bangladesh"
-    // }]
-
-    // function draw_map(country_list){
-    //   d3.json('js/map_data.json', function(data){
-    //
-    //   })
-    // }
-
 
     // Draws the map
     d3.json('js/map_data.json', function(data){
@@ -158,8 +164,11 @@ $(document).ready(function () {
     });
 
 
+
     function draw() {
         console.log("Redrawing");
     }
+
+
 
 });
