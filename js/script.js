@@ -156,18 +156,28 @@ $(document).ready(function () {
     });
 
 
+    $("#draw-btn").on('click', function(){
+        // Deleting the viz 
+        $("#viz").remove();
 
-    // Redraw map on selection
-    $(".selectpicker").on('change', function (e) {
-        console.log(e);
-        console.log($("[aria-selected='true']").val());
+        // Now making viz again with selected data 
+        $("#vizid").append("<div id='viz'></div>");
+
+        // Redrawing map 
+        var visualization = d3plus.viz()
+          .container("#viz")
+          .data(build_map_data(selected_countries))
+          .type("geo_map")
+          .coords({
+              "solo":  selected_countries, //["euesp", "euita", "eufra", "euprt", "asbgd", "ocnru"],
+              "value": "http://d3plus.org/topojson/countries.json"
+          })
+          .id("country")
+          .text("name")
+          // .color("value")
+          .tooltip("name")
+          .draw();
     });
-
-
-
-    function draw() {
-        console.log("Redrawing");
-    }
 
 
 
