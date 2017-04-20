@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function () { 
 
     //Required variables
     var code2country;
@@ -11,6 +11,7 @@ $(document).ready(function () {
     };
 
 
+
     //Populate option using json file
     $.getJSON("js/options.json", function(data){
       console.log(data);
@@ -19,10 +20,13 @@ $(document).ready(function () {
             value: v,
             text: v.capitalize()
           }));
-    });
-
-    //Grabbing data on the fly 
+      });
+    
+      //Grabbing data on the fly 
       $('#select-countries').selectize({
+          create: false,
+          allowEmptyOption: false,
+          placeholder: "Select Countries [Max: 7]",
           maxItems: 7,
           onItemAdd: function (data, $item){
               console.log(data);
@@ -41,7 +45,11 @@ $(document).ready(function () {
               selected_countries.splice(del_index, 1);
           }
       });
+
     });
+    
+
+
 
     // Loading code to country conversion file
     console.log("Code to country");
@@ -69,7 +77,7 @@ $(document).ready(function () {
     }
 
     //
-    var clist = ['asbgd', 'euita'];
+    var clist = ['asind', 'aspak', 'asbgd'];
 
     //Map viz begin
     var sample_data;
@@ -157,6 +165,10 @@ $(document).ready(function () {
 
 
     $("#draw-btn").on('click', function(){
+        
+        if (selected_countries.length <= 0)
+            alert("Select a country first!")
+        else {
         // Deleting the viz 
         $("#viz").remove();
 
@@ -177,8 +189,7 @@ $(document).ready(function () {
           // .color("value")
           .tooltip("name")
           .draw();
+        }
     });
-
-
 
 });
