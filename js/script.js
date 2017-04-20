@@ -1,42 +1,92 @@
 $(document).ready(function () {
 
+    //Required variables
+    var code2country;
+    var country2code;
+
+    // Capitalizes word for country
+    String.prototype.capitalize = function() {
+      return this.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
+    };
+
+    // Loading code to country conversion file
+    console.log("Code to country");
+    d3.json('js/code2country.json', function(data){
+      code2country = data;
+    });
+
+    // Loading country to code conversion file
+    d3.json('js/country2code.json', function(data){
+      country2code = data;
+    })
+
+    // Build map data to visualize based on countrylist argument
+    // argument -> ['afbdi', 'afbfa'];
+    // Returns -> [ { name: 'Burundi', country: 'afbdi' },
+        //    { name: 'Burkina Faso', country: 'afbfa' } ]
+    var build_map_data = function(cl) {
+      var dataset = [];
+      cl.forEach(function(data){
+        dataset.push({"name" : code2country[data].capitalize(),
+                        "country" : data
+                      })
+      });
+      return dataset;
+    }
+
+    //
+    var clist = ['asbgd', 'euita'];
+
     //Map viz begin
-    var sample_data = [{
-        // "value": 30,
-        "country": "eufra",
-        "name": "France"
-    }, {
-        //"value": 40,
-        "country": "euprt",
-        "name": "Portugal"
-    }, {
-        //"value": 50,
-        "country": "euesp",
-        "name": "Spain"
-    }, {
-        //"value": 60,
-        "country": "euita",
-        "name": "Italy"
-    }, {
-        //"value": 80,
-        "country": "asbgd",
-        "name": "Bangladesh"
-    }]
+    var sample_data;
+    // var sample_data = [{
+    //
+    //     "country": "eufra",
+    //     "name": "France"
+    // }, {
+    //
+    //     "country": "euprt",
+    //     "name": "Portugal"
+    // }, {
+    //
+    //     "country": "euesp",
+    //     "name": "Spain"
+    // }, {
+    //
+    //     "country": "euita",
+    //     "name": "Italy"
+    // }, {
+    //
+    //     "country": "asbgd",
+    //     "name": "Bangladesh"
+    // }]
+
+    // function draw_map(country_list){
+    //   d3.json('js/map_data.json', function(data){
+    //
+    //   })
+    // }
 
 
-    var visualization = d3plus.viz()
-        .container("#viz")
-        .data(sample_data)
-        .type("geo_map")
-        .coords({
-            "solo": ["euesp", "euita", "eufra", "euprt", "asbgd", "ocnru"],
-            "value": "http://d3plus.org/topojson/countries.json"
-        })
-        .id("country")
-        .text("name")
-        // .color("value")
-        .tooltip("name")
-        .draw();
+    // Draws the map
+    d3.json('js/map_data.json', function(data){
+      sample_data = data;
+      console.log(data);
+
+      var visualization = d3plus.viz()
+          .container("#viz")
+          .data(build_map_data(clist))
+          .type("geo_map")
+          .coords({
+              "solo":  clist, //["euesp", "euita", "eufra", "euprt", "asbgd", "ocnru"],
+              "value": "http://d3plus.org/topojson/countries.json"
+          })
+          .id("country")
+          .text("name")
+          // .color("value")
+          .tooltip("name")
+          .draw();
+    });
 
 
 
@@ -65,6 +115,10 @@ $(document).ready(function () {
                 $("#viz2").remove();
                 old_id = current_id;
             }
+
+            //Getting country name from code
+            console.log(code2country[current_id]);
+
             $("#vizid2").append("<div id='viz2'></div>")
 
             var visualization = d3plus.viz()
@@ -82,7 +136,9 @@ $(document).ready(function () {
                 .draw()
 
         } else {
-            $("#viz2").remove();
+            // Check if clicked outside the map viz
+            if (current_id !== '')
+                $("#viz2").remove();
         }
     });
     // Send Graph data according to the modal
