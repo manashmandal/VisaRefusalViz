@@ -5,6 +5,8 @@ $(document).ready(function () {
     var country2code;
     var selected_countries = [];
 
+    
+
     // Capitalizes word for country
     String.prototype.capitalize = function() {
       return this.replace(/(?:^|\s)\S/g, function(a) { return a.toUpperCase(); });
@@ -47,7 +49,6 @@ $(document).ready(function () {
       });
 
     });
-    
 
 
 
@@ -85,7 +86,6 @@ $(document).ready(function () {
     // Draws the map
     d3.json('js/map_data.json', function(data){
       sample_data = data;
-      console.log(data);
 
       var visualization = d3plus.viz()
           .container("#viz")
@@ -103,13 +103,67 @@ $(document).ready(function () {
     });
 
 
-
     //Bar viz begins
     var sd;
     // Loading external data
     d3.json('js/visa_refusal.json', function (data) {
         sd = data;
+
+        // Initialize comparison bar chart 
+        var cd = [];
+        clist.forEach(function(cc){
+        sd[cc].forEach(function(dat){
+                cd.push(dat);
+        });
+
     });
+
+    // Plotting the bar chart 
+    var visualization = d3plus.viz()
+                                .container("#viz3")
+                                .data(cd)
+                                .type("bar")
+                                .id("name")
+                                .x("year")
+                                .y("rate")
+                                .time("year")
+                                .draw()
+    });
+
+    //Initiates the comparison viz
+    var draw_comparison_chart = function(cl){
+        // Remove the viz first 
+        $("#viz3").remove();
+
+        // Then append 
+        $("#vizid3").append("<div id='viz3'></div>");
+
+
+        var comparison_dataset = [];
+        cl.forEach(function(country_code){
+            sd[country_code].forEach(function(dat){
+                comparison_dataset.push(dat);
+            })
+        });
+
+        console.log("Comparison dataset");
+        console.log(comparison_dataset);
+
+        var visualization = d3plus.viz()
+                                .container("#viz3")
+                                .data(comparison_dataset)
+                                .type("bar")
+                                .id("name")
+                                .x("year")
+                                .y("rate")
+                                .time("year")
+                                .draw()
+    }
+    
+
+    //Initialize comparison 
+
+    
 
 
     var current_id = '';
@@ -155,13 +209,6 @@ $(document).ready(function () {
                 $("#viz2").remove();
         }
     });
-    // Send Graph data according to the modal
-    $("#myModal").on("show.bs.modal", function (event) {
-        console.log("MOdal Opened");
-    });
-    $("#myModal").on("hide.bs.modal", function (event) {
-        console.log("Modal Closed");
-    });
 
 
     $("#draw-btn").on('click', function(){
@@ -189,6 +236,9 @@ $(document).ready(function () {
           // .color("value")
           .tooltip("name")
           .draw();
+
+          // draw comparison chart 
+          draw_comparison_chart(selected_countries);
         }
     });
 
