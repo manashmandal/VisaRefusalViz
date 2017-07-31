@@ -93,7 +93,7 @@ $(document).ready(function () {
           .type("geo_map")
           .coords({
               "solo":  clist, //["euesp", "euita", "eufra", "euprt", "asbgd", "ocnru"],
-              "value": "http://d3plus.org/topojson/countries.json"
+              "value": "countries.json"
           })
           .id("country")
           .text("name")
